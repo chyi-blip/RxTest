@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="province"
+            type="com.primb.rxtest.weather.module.ProvinceBean" />
+
+        <variable
+            name="city"
+            type="com.primb.rxtest.weather.module.CityBean" />
+
+        <variable
+            name="click"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="isProvince"
+            type="Boolean" />
+    </data>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:onClick="@{click}"
+        android:text="@{isProvince ? province.name : city.name}"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        tools:text="北京" />
+</layout>
+
+

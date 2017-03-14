@@ -1,0 +1,411 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.primb.rxtest.common.utils.Utils" />
+
+        <variable
+            name="observable"
+            type="com.primb.rxtest.weather.module.WeatherVM" />
+
+        <variable
+            name="click"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_login"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="12dp"
+            android:background="@drawable/bg_weather_content">
+
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_time"
+                android:gravity="center"
+                android:text="@{observable.weather.today.date}"
+                android:textColor="#fff"
+                android:textSize="14sp"
+                tools:text="2016-12-13" />
+
+            <TextView
+                android:id="@+id/tv_week"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/tv_date"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/tv_date"
+                android:gravity="center"
+                android:text="@{Utils.parseWeek(0)}"
+                android:textColor="#fff"
+                android:textSize="14sp"
+                tools:text="周一" />
+
+            <TextView
+                android:id="@+id/tv_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@id/tv_date"
+                android:layout_below="@id/tv_date"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="@{observable.weather.forecast.temp1}"
+                android:textColor="#fff"
+                android:textSize="22sp"
+                tools:text="-NN/NN" />
+
+            <TextView
+                android:id="@+id/tv_temp_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/tv_temp"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/tv_temp"
+                android:gravity="center"
+                android:textColor="#fff"
+                android:textSize="10sp"
+                tools:text="℃" />
+
+            <ImageView
+                android:id="@+id/iv_weather"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/weather_qing"
+                binding:weatherImage="@{observable.weather.forecast.weather1}" />
+
+            <TextView
+                android:id="@+id/tv_city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@id/tv_temp"
+                android:layout_below="@id/iv_weather"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:onClick="@{click}"
+                android:text="@{observable.weather.aqi.city}"
+                android:textColor="#f2d519"
+                android:textSize="30sp"
+                tools:text="北京" />
+
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_below="@id/iv_weather"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="30dp"
+                android:layout_toRightOf="@id/tv_city"
+                android:background="@drawable/ic_change_city" />
+
+            <TextView
+                android:id="@+id/tv_thing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/tv_city"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="80dp"
+                android:gravity="center"
+                android:text='@{observable.weather.index[2].index + "运动"}'
+                android:textColor="#fff"
+                android:textSize="22sp"
+                tools:text="适宜出行" />
+
+            <TextView
+                android:id="@+id/tv_shidu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/tv_thing"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                android:text='@{observable.weather.today.humidityMax + "/" + observable.weather.today.humidityMin}'
+                android:textColor="#fff"
+                android:textSize="22sp"
+                tools:text="NN" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_thing"
+                android:layout_marginRight="2dp"
+                android:layout_toLeftOf="@+id/tv_shidu"
+                android:gravity="center"
+                android:text="湿度:"
+                android:textColor="#fff"
+                android:textSize="22sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="40dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_week_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_time"
+                        android:gravity="center"
+                        android:text="@{Utils.parseWeek(1)}"
+                        android:textColor="#fff"
+                        android:textSize="14sp"
+                        tools:text="周二" />
+
+                    <ImageView
+                        android:id="@+id/iv_weather_2"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        binding:weatherImage="@{observable.weather.forecast.weather2}"
+                        tools:src="@drawable/weather_qing" />
+
+                    <TextView
+                        android:id="@+id/tv_temp_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:text="@{observable.weather.forecast.temp2}"
+                        android:textColor="#fff"
+                        android:textSize="10sp"
+                        tools:text="-NN/NN" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_week_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_time"
+                        android:gravity="center"
+                        android:text="@{Utils.parseWeek(2)}"
+                        android:textColor="#fff"
+                        android:textSize="14sp"
+                        tools:text="周二" />
+
+                    <ImageView
+                        android:id="@+id/iv_weather_3"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        binding:weatherImage="@{observable.weather.forecast.weather3}"
+                        tools:src="@drawable/weather_qing" />
+
+                    <TextView
+                        android:id="@+id/tv_temp_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:text="@{observable.weather.forecast.temp3}"
+                        android:textColor="#fff"
+                        android:textSize="10sp"
+                        tools:text="-NN/NN" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_week_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_time"
+                        android:gravity="center"
+                        android:text="@{Utils.parseWeek(3)}"
+                        android:textColor="#fff"
+                        android:textSize="14sp"
+                        tools:text="周二" />
+
+                    <ImageView
+                        android:id="@+id/iv_weather_4"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        binding:weatherImage="@{observable.weather.forecast.weather4}"
+                        tools:src="@drawable/weather_qing" />
+
+                    <TextView
+                        android:id="@+id/tv_temp_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:text="@{observable.weather.forecast.temp4}"
+                        android:textColor="#fff"
+                        android:textSize="10sp"
+                        tools:text="-NN/NN" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_week_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_time"
+                        android:gravity="center"
+                        android:text="@{Utils.parseWeek(4)}"
+                        android:textColor="#fff"
+                        android:textSize="14sp"
+                        tools:text="周二" />
+
+                    <ImageView
+                        android:id="@+id/iv_weather_5"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        binding:weatherImage="@{observable.weather.forecast.weather5}"
+                        tools:src="@drawable/weather_qing" />
+
+                    <TextView
+                        android:id="@+id/tv_temp_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:text="@{observable.weather.forecast.temp5}"
+                        android:textColor="#fff"
+                        android:textSize="10sp"
+                        tools:text="-NN/NN" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_week_6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_time"
+                        android:gravity="center"
+                        android:text="@{Utils.parseWeek(5)}"
+                        android:textColor="#fff"
+                        android:textSize="14sp"
+                        tools:text="周二" />
+
+                    <ImageView
+                        android:id="@+id/iv_weather_6"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        binding:weatherImage="@{observable.weather.forecast.weather6}"
+                        tools:src="@drawable/weather_qing" />
+
+                    <TextView
+                        android:id="@+id/tv_temp_6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:text="@{observable.weather.forecast.temp6}"
+                        android:textColor="#fff"
+                        android:textSize="10sp"
+                        tools:text="-NN/NN" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_week_7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/bg_time"
+                        android:gravity="center"
+                        android:text="@{Utils.parseWeek(6)}"
+                        android:textColor="#fff"
+                        android:textSize="14sp"
+                        tools:text="周二" />
+
+                    <ImageView
+                        android:id="@+id/iv_weather_7"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        binding:weatherImage="@{observable.weather.forecast.weather5}"
+                        tools:src="@drawable/weather_qing" />
+
+                    <TextView
+                        android:id="@+id/tv_temp_7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:text="@{observable.weather.forecast.temp5}"
+                        android:textColor="#fff"
+                        android:textSize="10sp"
+                        tools:text="-NN/NN" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="click"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="isShow"
+            type="Boolean" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_login"
+        android:orientation="vertical"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical">
+
+            <ImageButton
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/arrow_back_button"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:onClick="@{click}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="选择地区"
+                android:layout_centerInParent="true"
+                android:textColor="#fff"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_alignParentBottom="true"
+                android:background="#c6d1d4" />
+
+
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/search_edit_view"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/bg_search"
+            android:hint="快速查找"
+            android:textColor="#fff"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:maxLines="1"
+            android:textColorHint="#ffff"
+            android:textSize="16sp"
+            android:visibility="@{isShow ? View.VISIBLE:View.GONE}" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/province_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="18dp"
+            android:visibility="@{isShow ? View.VISIBLE:View.GONE}"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/city_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="18dp"
+            android:visibility="@{!isShow ? View.VISIBLE:View.GONE}"/>
+    </LinearLayout>
+
+</layout>

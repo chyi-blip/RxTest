@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="E:\projects\RxTest\LibUpgrade\libs"><file name="armeabi-v7a/libbsdiff_utils.so" path="E:\projects\RxTest\LibUpgrade\libs\armeabi-v7a\libbsdiff_utils.so"/></source></dataSet><dataSet config="release"><source path="E:\projects\RxTest\LibUpgrade\build-types\release\jniLibs"/></dataSet></merger>
