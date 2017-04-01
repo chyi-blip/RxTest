@@ -49,14 +49,14 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         bundleSecond.putInt("index", 1);
         weatherSecond.setArguments(bundleSecond);
 
-        WeatherFragment weatherThird = new WeatherFragment();
+        WeatherFragment weatherThirds = new WeatherFragment();
         Bundle bundleThird = new Bundle();
         bundleThird.putInt("index", 2);
-        weatherThird.setArguments(bundleThird);
+        weatherThirds.setArguments(bundleThird);
 
         fragmentList.add(weatherFirst);
         fragmentList.add(weatherSecond);
-        fragmentList.add(weatherThird);
+        fragmentList.add(weatherThirds);
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), fragmentList);
         binding.viewpager.setAdapter(adapter);
