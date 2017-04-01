@@ -46,7 +46,6 @@ public class StringUtils {
         if(d==null){
             return defValue;
         }
-
         return double2String(d,num);
     }
 }
