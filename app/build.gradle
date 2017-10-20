@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
+apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion 25
@@ -7,7 +8,6 @@ android {
     dataBinding {
         enabled true
     }
-
     defaultConfig {
         applicationId "com.primb.rxtest"
         minSdkVersion 16
@@ -28,6 +28,12 @@ android {
         daoPackage 'com.primb.rxtest.weather.dao'
         targetGenDir 'src/main/java'
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
 
 }
 

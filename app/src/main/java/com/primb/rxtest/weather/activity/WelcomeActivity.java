@@ -20,8 +20,10 @@ import com.primb.rxtest.weather.dao.ProvinceBeanDao;
 import com.primb.rxtest.weather.module.CityBean;
 import com.primb.rxtest.weather.module.ProvinceBean;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -141,7 +143,8 @@ public class WelcomeActivity extends BaseActivity<ActivityWelcomeBinding> {
                 List<HashMap<String, Object>> hashMaps = xmlDataParser.getFormatList("RECORDS");
                 return hashMaps;
             }
-        }).flatMap(new Func1<List<HashMap<String, Object>>, Observable<HashMap<String, Object>>>() {
+        })
+         .flatMap(new Func1<List<HashMap<String, Object>>, Observable<HashMap<String, Object>>>() {
             @Override
             public Observable<HashMap<String, Object>> call(List<HashMap<String, Object>> mapList) {
                 return Observable.from(mapList);
@@ -166,6 +169,11 @@ public class WelcomeActivity extends BaseActivity<ActivityWelcomeBinding> {
 
                     }
                 });
+
+        ArrayList<File> arrayList = new ArrayList<>();
+        Observable.from(arrayList)
+                .flatMap(file -> Observable.just(file.getName()));
+        Observable.from(arrayList).flatMap(s -> Observable.just(s));
     }
 
     @BindingAdapter({"setAnimation"})
