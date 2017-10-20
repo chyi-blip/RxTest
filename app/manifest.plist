@@ -11,19 +11,19 @@
 					<key>kind</key>
 					<string>software-package</string>
 					<key>url</key>
-					<string>https://192.168.5.35:8443/app/boclfm.ipa</string>
+					<string>https://raw.githubusercontent.com/ChinaMahatma/RxTest/master/app/ios/boclfm.ipa</string>
 				</dict>
 				<dict>
 					<key>kind</key>
 					<string>display-image</string>
 					<key>url</key>
-					<string>https://192.168.5.35:8443/app/57.png</string>
+					<string>https://raw.githubusercontent.com/ChinaMahatma/RxTest/master/app/ios/57.png</string>
 				</dict>
 				<dict>
 					<key>kind</key>
 					<string>full-size-image</string>
 					<key>url</key>
-					<string>https://192.168.5.35:8443/app/512.png</string>
+					<string>https://raw.githubusercontent.com/ChinaMahatma/RxTest/master/app/ios/512.png</string>
 				</dict>
 			</array>
 			<key>metadata</key>
